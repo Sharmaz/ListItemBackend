@@ -3,48 +3,23 @@
 
 // Dependencias
 const express = require('express');
-
+const ListsController = require('../controllers/lists');
 const router = express.Router();
 
 // Lists Endpoints
 // Obtenemos todas las listas
-router.get('/lists', (req, res) => {
-  res.status(200).json({
-    message: "Getting Lists"
-  });
-});
+router.get('/lists', ListsController.getLists);
 
 // Creamos una lista
-router.post('/lists', (req, res) => {
-  res.status(200).json({
-    message: "List Created"
-  });
-});
+router.post('/lists', ListsController.createLists);
 
 // Obtenemos una lista por ID
-router.get('/lists/:listId', (req, res) => {
-  const listId = req.params.listId;
-  res.status(200).json({
-    listId
-  });
-});
+router.get('/lists/:listId', ListsController.getListsById);
 
 // Modificamos una lista por ID
-router.patch('/lists/:listId', (req, res) => {
-  const listId = req.params.listId;
-  res.status(200).json({
-    message: "List Updated!!",
-    listId
-  });
-});
+router.patch('/lists/:listId', ListsController.updateLists);
 
 // Eliminamos una lista por ID
-router.delete('/lists/:listId', (req, res) => {
-  const listId = req.params.listId;
-  res.status(200).json({
-    message: "List Deleted!!",
-    listId
-  });
-});
+router.delete('/lists/:listId', ListsController.deleteLists);
 
 module.exports = router;

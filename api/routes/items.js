@@ -3,48 +3,24 @@
 
 // Dependencias
 const express = require('express');
+const ItemsController = require('../controllers/items');
 
 const router = express.Router();
 
 // Items Endpoints
 // Obtenemos todos los items
-router.get('/items', (req, res) => {
-  res.status(200).json({
-    message: "Getting Items"
-  });
-});
+router.get('/items', ItemsController.getItems);
 
 // Creamos un Item
-router.post('/items', (req, res) => {
-  res.status(200).json({
-    message: "Item Created!!"
-  });
-});
+router.post('/items', ItemsController.createItems);
 
 // Obtenemos un Item por ID
-router.get('/items/:itemId', (req, res) => {
-  const itemId = req.params;
-  res.status(200).json({
-    itemId
-  });
-});
+router.get('/items/:itemId', ItemsController.getItemsById);
 
 // Modificamos un Item por ID
-router.patch('/items/:itemId', (req, res) => {
-  const itemId = req.params;
-  res.status(200).json({
-    message: "Item Updated!!",
-    itemId
-  });
-});
+router.patch('/items/:itemId', ItemsController.updateItems);
 
 // Eliminamos un Item por ID
-router.delete('/items/:itemId', (req, res) => {
-  const itemId = req.params.itemId;
-  res.status(200).json({
-    message: "Item Deleted!!",
-    itemId
-  });
-});
+router.delete('/items/:itemId', ItemsController.deleteItems);
 
 module.exports = router;
