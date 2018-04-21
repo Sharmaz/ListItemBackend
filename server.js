@@ -3,14 +3,13 @@
 
 // Dependencias
 const http = require('http');
-const express = require('express');
 const chalk = require('chalk');
+const app = require('./app');
 
 /* port tendrá una variable de entorno para producción
  * o 3000 si no existe la variable de entorno o estamos en desarrollo
  **/
 const port = process.env.PORT || 3000;
-const app = express();
 
 // Creamos el servidor con express
 const server = http.createServer(app);
