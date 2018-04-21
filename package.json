@@ -1,0 +1,28 @@
+{
+  "name": "listitem-backend",
+  "version": "0.1.0",
+  "description": "Backend for ListItem project (Server, API and DB)",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "start:dev": "DEBUG=listitem:* nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sharmaz/ListItemBackend.git"
+  },
+  "author": "Ivan Robles <irae45@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sharmaz/ListItemBackend/issues"
+  },
+  "homepage": "https://github.com/Sharmaz/ListItemBackend#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  },
+  "dependencies": {
+    "chalk": "^2.4.0",
+    "debug": "^3.1.0",
+    "express": "^4.16.3"
+  }
+}
