@@ -3,11 +3,30 @@
 
 // Dependencias
 const express = require('express');
+const bodyParser = require('body-parser');
 const debug = require('debug')('listitem:backend')
 const ListsRoutes = require('./api/routes/lists');
 const ItemsRoutes = require('./api/routes/items');
 
 const app = express();
+
+// Middlewares
+app.use(bodyParser.json());
+
+// Permitimos acceso a nuestro API desde servidores externos (Manejo de CORS)
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers', 
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methos', 'PATCH, POST, PUT, GET, DELETE');
+    return res.status(200).json({});
+  }
+  next();
+});
+
 
 // Manejamos los Endpoints de nuestro API con Express
 app.use('/api', ListsRoutes);

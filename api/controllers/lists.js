@@ -8,8 +8,12 @@ const ListsController = {
     });
   },
   createLists: (req, res) => {
+    const list = {
+      name: req.body.name
+    };
     res.status(200).json({
-      message: "List Created"
+      message: "List Created",
+      list
     });
   },
   getListsById: (req, res) => {
