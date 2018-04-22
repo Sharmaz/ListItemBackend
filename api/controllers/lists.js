@@ -3,6 +3,7 @@
 
 // Dependencias
 const List = require('../models/lists');
+const debug = require('debug')('listitem:controllers-list')
 
 /* Utilizamos los metodos de mongoose para manipular la base de datos de mongodb
  * find()      Muestra todas las listas
@@ -14,6 +15,7 @@ const List = require('../models/lists');
 const ListsController = {
   getLists: async (req, res) => {
     const lists = await List.find({});
+    debug(lists);
     res.status(200).json({lists});
   },
   createLists: async (req, res) => {
