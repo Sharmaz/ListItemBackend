@@ -5,8 +5,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const debug = require('debug')('listitem:backend')
+const mongoose = require('mongoose');
 const ListsRoutes = require('./api/routes/lists');
 const ItemsRoutes = require('./api/routes/items');
+
+/* Conectamos la base de datos en MongoDB Atalas con Mongoose
+ * Utilizamos la variable de entorno MONGO_ATLAS_PASS en nodemon.json
+ */
+mongoose.connect(
+  'mongodb://ListItem:' 
+  + process.env.MONGO_ATLAS_PASS + 
+  '@listitem-shard-00-00-edxzq.mongodb.net:27017,listitem-shard-00-01-edxzq.mongodb.net:27017,listitem-shard-00-02-edxzq.mongodb.net:27017/test?ssl=true&replicaSet=ListItem-shard-0&authSource=admin'
+);
 
 const app = express();
 
