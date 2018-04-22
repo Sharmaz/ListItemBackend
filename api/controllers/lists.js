@@ -14,8 +14,7 @@ const debug = require('debug')('listitem:controllers-list')
  */
 const ListsController = {
   getLists: async (req, res) => {
-    const lists = await List.find({});
-    debug(lists);
+    const lists = await List.find({}).select('_id name').populate('items', '_id name');
     res.status(200).json({lists});
   },
   createLists: async (req, res) => {
@@ -25,7 +24,7 @@ const ListsController = {
   },
   getListsById: async (req, res) => {
     const listId = req.params.listId;
-    const listResult = await List.findById(listId);
+    const listResult = await List.findById(listId).select('_id name');
     res.status(200).json(listResult);
   },
   updateLists: async (req, res) => {

@@ -14,7 +14,7 @@ const List = require('../models/lists');
  */
 const ItemsController = {
   getItems: async (req, res) => {
-    const items = await Item.find({});
+    const items = await Item.find({}).select('_id name');
     res.status(200).json({items});
   },
   createItems: async (req, res) => {
@@ -30,7 +30,7 @@ const ItemsController = {
   },
   getItemsById: async (req, res) => {
     const itemId = req.params.itemId;
-    const itemResult = await Item.findById(itemId);
+    const itemResult = await Item.findById(itemId).select('_id name');
     res.status(200).json(itemResult);
   },
   updateItems: async (req, res) => {
